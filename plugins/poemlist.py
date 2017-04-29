@@ -5,11 +5,7 @@ import pandas
 
 class Poem:
     """ ポエムを取得するクラス """
-    def __init__(self, dir):
-        self.csv = dir
-
-    def read_from_csv(self, path):
-        """ ポエムをCSVから読み込む """
+    def __init__(self, path):
         self.csv = pandas.read_csv(path)
 
     def get_poems(self):
