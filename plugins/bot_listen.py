@@ -1,14 +1,15 @@
 # coding: utf-8
 """ channelへ発言が来た時 """
 from slackbot.bot import listen_to
+import poemlist
+import select_random
 
-@listen_to("あきらめたら")
-@listen_to("諦めたら")
-def anzai(message):
-    """ 諦めたらそこで試合終了ですよ """
-    message.send("そこで試合終了ですよ。")
+DIR = "../poem/poem.csv"
 
-@listen_to("いいですか")
-def reaction(message):
-    """ リアクション """
-    message.react("+1")
+@listen_to("ポエム")
+def random_poem(message):
+    """ ランダムにポエムを返す """
+    poem = poemlist.Poem(DIR)
+    poems = poem.get_poems()
+    random = select_random.SelectRandom(poems)
+    print(random)
