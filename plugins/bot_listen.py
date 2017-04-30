@@ -18,7 +18,7 @@ def rondom_poem(message):
     random = select_random.SelectRandom(poems)
     name, poem = random.get_random_poem()
     slack.chat.post_message(
-        "bot-test",
+        message.body["channel"],
         poem+" by @"+name,
         username=name,
         icon_emoji=":"+name+":",
