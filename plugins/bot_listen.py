@@ -4,8 +4,7 @@
 from slackbot.bot import listen_to
 from slacker import Slacker
 import slackbot_settings
-from . import poemlist
-from . import select_random
+from . import random_poem
 
 DIR = "poem/poem.csv"
 
@@ -13,9 +12,7 @@ DIR = "poem/poem.csv"
 def rondom_poem(message):
     """ ランダムにポエムを返す """
     slack = Slacker(slackbot_settings.API_TOKEN)
-    poem = poemlist.Poem(DIR)
-    poems = poem.get_poems()
-    random = select_random.SelectRandom(poems)
+    random = random_poem.RandomPoem(DIR)
     name, poem = random.get_random_poem()
     slack.chat.post_message(
         message.body["channel"],
