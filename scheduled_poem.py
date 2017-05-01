@@ -8,7 +8,7 @@ from slacker import Slacker
 import math
 import time
 import slackbot_settings
-from . import random_poem
+from plugins import random_poem
 
 DIR = "poem/poem.csv"
 
@@ -56,12 +56,16 @@ def job_controller(jobConfig):
     """
 
     while True:
+        try:
 
-        # 次実行時刻まで待機
-        time.sleep(jobConfig.next())
+            # 次実行時刻まで待機
+            time.sleep(jobConfig.next())
 
-        # 処理を実行する。
-        jobConfig.job()
+            # 処理を実行する。
+            jobConfig.job()
+            
+        except KeyboardInterrupt:
+            break
 
 
 def job1():
