@@ -9,6 +9,8 @@ from . import random_poem
 DIR = "poem/poem.csv"
 
 @listen_to("ポエム")
+@listen_to("ぽえむ")
+@listen_to("poem")
 def rondom_poem(message):
     """ ランダムにポエムを返す """
     slack = Slacker(slackbot_settings.API_TOKEN)
