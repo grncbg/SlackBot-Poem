@@ -1,5 +1,5 @@
 # coding: utf-8
-""" 定時実行 """
+""" 定時実行して下さい """
 
 from slacker import Slacker
 import slackbot_settings
